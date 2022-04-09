@@ -4,7 +4,7 @@
 #include <string.h>
 #include "compare.h"
 
-#define ROWS 100
+
 #define COLS 33
 
 int get_from_base(char *baza[])
@@ -19,21 +19,17 @@ int get_from_base(char *baza[])
 
     int i = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
-        //baza[i] = line;
         baza[i]= (char*)malloc(strlen(line)*sizeof(char));
         strcpy(baza[i], line);
-        // printf("Retrieved line of length %zu:\n", read);
-        // printf("%s", line);
         i++;
     }
-    printf("Hashes: %s %s %s %s", baza[0], baza[1], baza[2], baza[3]);
+    // printf("Hashes: %s %s %s %s", baza[0], baza[1], baza[2], baza[3]);
+    printf("%p", &baza);
 
     fclose(fp);
     if (line)
         free(line);
-    exit(EXIT_SUCCESS);
-
-    
+    // exit(EXIT_SUCCESS);
 
     return 0;
 }
