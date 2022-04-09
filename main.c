@@ -10,7 +10,7 @@ void skip(char *msg){
 int main()
 {
 	char hash[32];
-    char *filename="virus.txt";
+    char *filename="/home/dan/Desktop/antywirus/.git/hooks/pre-merge-commit.sample";
     count_hash(filename,hash);
     puts(hash);
 	return 0;
