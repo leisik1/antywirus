@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-    char baza[ROWS][COLS];
+    char *baza[COLS];
 	char hash[32];
     get_from_base(baza);
     //char *filename="/home/dan/Desktop/antywirus/.git/hooks/pre-merge-commit.sample";

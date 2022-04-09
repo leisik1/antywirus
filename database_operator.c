@@ -7,7 +7,7 @@
 #define ROWS 100
 #define COLS 33
 
-int get_from_base(char (*baza)[COLS])
+int get_from_base(char *baza[])
 {
     FILE * fp = fopen("vulnerability_db.txt", "r");
     char * line = NULL;
@@ -19,18 +19,20 @@ int get_from_base(char (*baza)[COLS])
 
     int i = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
+        // baza[i] = line;
         strcpy(baza[i], line);
         // printf("Retrieved line of length %zu:\n", read);
         // printf("%s", line);
         i++;
     }
+    printf("Hashes: %s %s %s %s", baza[0], baza[1], baza[2], baza[3]);
 
     fclose(fp);
     if (line)
         free(line);
     exit(EXIT_SUCCESS);
 
-    printf("Hashes: %d %s %s %s", *baza[0], baza[1], baza[2], baza[3]);
+    
 
     return 0;
 }
