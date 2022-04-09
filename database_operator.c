@@ -19,7 +19,8 @@ int get_from_base(char *baza[])
 
     int i = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
-        // baza[i] = line;
+        //baza[i] = line;
+        baza[i]= (char*)malloc(strlen(line)*sizeof(char));
         strcpy(baza[i], line);
         // printf("Retrieved line of length %zu:\n", read);
         // printf("%s", line);
