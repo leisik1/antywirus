@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <openssl/md5.h>
+#include <string.h>
 
 int count_hash(char *filename, char hash_text[]){
 	
@@ -26,13 +27,14 @@ int count_hash(char *filename, char hash_text[]){
 	for(j = 0; j < 16; ++j){
 		sprintf(&hash_text[j*2], "%02x", (unsigned char) c[j]);
 	}
+    hash_text[strlen(hash_text)] = '\0';
 
-	int i;
-    for(i = 0; i < MD5_DIGEST_LENGTH; i++){
-		printf("%02x", c[i]);
-	} 
+	// int i;
+    // for(i = 0; i < MD5_DIGEST_LENGTH; i++){
+	// 	printf("%02x", c[i]);
+	// } 
 
-    printf (" %s\n", filename);
+    // printf (" %s\n", filename);
     fclose (inFile);
     return 0;
 }
