@@ -44,6 +44,11 @@ void list_files(char* dirname){
 
 
 void scan_files(char* dirname){
+
+  char *baza[COLS];
+  int baza_size;
+  get_from_base(baza, &baza_size);
+
   DIR* dir = opendir(dirname);
   if (dir == NULL){
     return;
@@ -56,6 +61,7 @@ void scan_files(char* dirname){
   struct dirent* entity;
   entity = readdir(dir);
   while (entity != NULL) {
+
     if (strcmp(entity->d_name, ".") != 0 && strcmp(entity->d_name, "..") && entity->d_type != DT_DIR){
       char path_to_scan[4097] = {0};
       char hash[33];
@@ -66,7 +72,14 @@ void scan_files(char* dirname){
       printf("%s\n", path_to_scan);
 
       count_hash(path_to_scan, hash);
-      printf("%s\n\n", hash);
+      // printf("%s\n\n", hash);
+
+      for(int i=0; i < baza_size; i++){
+        // printf("%s", baza[i]);
+        if(!strncmp(hash, baza[i],32)){
+            printf("WIRUS!!!\n");
+        }
+    }
 
       // printf("%hhd %s/%s\n", entity->d_type, dirname, entity->d_name);
     }

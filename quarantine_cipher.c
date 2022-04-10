@@ -51,6 +51,6 @@ void decrypt(char *file_to_decrypt, char *desired_name) {
 
 int main(void) {
     AES_set_encrypt_key(userkey, 128, &key);
-    encrypt("wirus.txt","zaszyfrowany_wirus.txt");
+    encrypt("/home/dan/Desktop/virus.txt","/home/dan/Desktop/antywirus/quarantine/virus2.txt");
     //decrypt();
 }
