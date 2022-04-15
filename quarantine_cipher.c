@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <openssl/aes.h>
 #include <string.h>
+#include <time.h>
+#include <assert.h>
 
 unsigned char indata[AES_BLOCK_SIZE];
 unsigned char outdata[AES_BLOCK_SIZE];
@@ -11,7 +13,39 @@ unsigned char IV[] = "\x0A\x91\x72\x71\x6A\xE6\x42\x84\x09\x88\x5B\x8B\x82\x9C\x
 
 AES_KEY key;
 
-void encrypt(char *file_to_encrypt, char *desired_name) {
+int get_random() {
+    srand(time(0)); 
+    return rand();
+}
+
+void encrypt(char *file_to_encrypt) {
+
+    char desired_name[4096] = {0};
+
+    strcat(desired_name, "/home/dan/Desktop/antywirus/quarantine/");
+
+    // char * desired_name = "/home/dan/Desktop/antywirus/quarantine/";
+    char * tld = strrchr(file_to_encrypt, '/');
+    char * file_name = tld + 1;
+
+	int n = get_random();
+    char num_text[100] = {0};
+
+    sprintf(num_text,"%d",n);
+
+    strcat(desired_name,num_text);
+    strcat(desired_name,file_name);
+    printf("%s", desired_name);
+
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    char s[64];
+    assert(strftime(s, sizeof(s), "%c", tm));
+
+    FILE* database = fopen("quarantine_db.txt","a");
+    fprintf(database, "File destination: %s, File name in quarantine: %s, Date: %s\n",file_to_encrypt,desired_name,s);
+
+    AES_set_encrypt_key(userkey, 128, &key);
     FILE *ifp, *ofp;
     ifp = fopen(file_to_encrypt, "r+");
     ofp = fopen(desired_name, "w+");
@@ -28,6 +62,7 @@ void encrypt(char *file_to_encrypt, char *desired_name) {
     }
     fclose(ifp);
     fclose(ofp);
+    fclose(database);
 }
 
 void decrypt(char *file_to_decrypt, char *desired_name) {
@@ -49,8 +84,10 @@ void decrypt(char *file_to_decrypt, char *desired_name) {
     fclose(ofp);
 }
 
-int main(void) {
-    AES_set_encrypt_key(userkey, 128, &key);
-    encrypt("/home/dan/Desktop/virus.txt","/home/dan/Desktop/antywirus/quarantine/virus2.txt");
-    //decrypt();
-}
+
+
+// int main(void) {
+    
+//     encrypt("/home/dan/Desktop/virus.txt");
+//     //decrypt();
+// }

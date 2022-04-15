@@ -1,0 +1,8 @@
+File destination: /home/dan/Desktop/super_grozny_wirus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/1149520613super_grozny_wirus.txt, Date: Fri Apr 15 05:35:44 2022
+File destination: /home/dan/Desktop/ekstra_grozny_wirus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/1149520613ekstra_grozny_wirus.txt, Date: Fri Apr 15 05:35:44 2022
+File destination: /home/dan/Desktop/antywirus_lokalny/virus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/1149520613virus.txt, Date: Fri Apr 15 05:35:44 2022
+File destination: /home/dan/Desktop/antywirus/grozny_wirus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/1149520613grozny_wirus.txt, Date: Fri Apr 15 05:35:44 2022
+File destination: /home/dan/Desktop/super_grozny_wirus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/109554747super_grozny_wirus.txt, Date: Fri Apr 15 05:38:51 2022
+File destination: /home/dan/Desktop/ekstra_grozny_wirus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/109554747ekstra_grozny_wirus.txt, Date: Fri Apr 15 05:38:51 2022
+File destination: /home/dan/Desktop/antywirus_lokalny/virus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/109554747virus.txt, Date: Fri Apr 15 05:38:51 2022
+File destination: /home/dan/Desktop/antywirus/grozny_wirus.txt, File name in quarantine: /home/dan/Desktop/antywirus/quarantine/109554747grozny_wirus.txt, Date: Fri Apr 15 05:38:51 2022

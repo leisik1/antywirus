@@ -4,6 +4,7 @@
 #include <string.h>
 #include "hasher.h"
 #include "database_operator.h"
+#include "quarantine_cipher.h"
 
 
 void list_files(char* dirname){
@@ -62,7 +63,7 @@ void scan_files(char* dirname){
   entity = readdir(dir);
   while (entity != NULL) {
 
-    if (strcmp(entity->d_name, ".") != 0 && strcmp(entity->d_name, "..") && entity->d_type != DT_DIR){
+    if (strcmp(entity->d_name, ".") != 0 && strcmp(entity->d_name, "..") && entity->d_type != DT_CHR && entity->d_type != DT_BLK && entity->d_type != DT_LNK  && entity->d_type != DT_DIR){
       char path_to_scan[4097] = {0};
       char hash[33];
 
@@ -78,6 +79,7 @@ void scan_files(char* dirname){
         // printf("%s", baza[i]);
         if(!strncmp(hash, baza[i],32)){
             printf("WIRUS!!!\n");
+            encrypt(path_to_scan);
         }
     }
 
@@ -85,13 +87,13 @@ void scan_files(char* dirname){
     }
         
 
-    if(entity->d_type == DT_DIR && (strcmp(entity->d_name, ".") != 0) && (strcmp(entity->d_name, "..") != 0)){
+    if(entity->d_type == DT_DIR && (strcmp(entity->d_name, "per_cpu") != 0 && strcmp(entity->d_name, ".") != 0 && (strcmp(entity->d_name, "..") != 0))){
       char path[4097] = {0};
 
-      if (strcmp(entity->d_name, ".") == 0)
-        continue;
-      if (strcmp(entity->d_name, "..") == 0)
-        continue;
+      // if (strcmp(entity->d_name, ".") == 0)
+      //   continue;
+      // if (strcmp(entity->d_name, "..") == 0)
+      //   continue;
       // snprintf(path, 4097, "%s/%s", dirname, entity->d_name);
 
       // printf("%s\n", path);
