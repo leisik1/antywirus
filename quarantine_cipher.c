@@ -22,27 +22,18 @@ void encrypt(char *file_to_encrypt) {
 
     char desired_name[4096] = {0};
 
-    // printf("%s", file_to_encrypt);
-
     strcat(desired_name, "/home/dan/Desktop/antywirus/quarantine/");
 
-    // char * desired_name = "/home/dan/Desktop/antywirus/quarantine/";
     char * tld = strrchr(file_to_encrypt, '/');
-    // printf("%s", tld);
     char * file_name = tld + 1;
-    // printf("%s", file_name);
 
 	int n = get_random();
     char num_text[100] = {0};
-
-    // printf("xd!!!\n");
 
     sprintf(num_text,"%d",n);
 
     strcat(desired_name,num_text);
     strcat(desired_name,file_name);
-    // printf("xdd!!!\n");
-    // printf("%s", desired_name);
 
     time_t t = time(NULL);
     struct tm *tm = localtime(&t);
@@ -72,10 +63,12 @@ void encrypt(char *file_to_encrypt) {
     }
     fclose(ifp);
     fclose(ofp);
+    // remove(file_to_encrypt); turned off for demonstration purposes
     fclose(database);
 }
 
 void decrypt(char *file_to_decrypt, char *desired_name) {
+    AES_set_encrypt_key(userkey, 128, &key);
     FILE *ifp, *ofp;
     ifp = fopen(file_to_decrypt, "r+");
     ofp = fopen(desired_name, "w+");
@@ -93,11 +86,3 @@ void decrypt(char *file_to_decrypt, char *desired_name) {
     fclose(ifp);
     fclose(ofp);
 }
-
-
-
-// int main(void) {
-    
-//     encrypt("/home/dan/Desktop/virus.txt");
-//     //decrypt();
-// }

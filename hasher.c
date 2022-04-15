@@ -5,7 +5,6 @@
 int count_hash(char *filename, char hash_text[]){
 	
 	unsigned char c[MD5_DIGEST_LENGTH];
-    //char *filename="virus.txt";
     FILE *inFile = fopen(filename, "rb");
     MD5_CTX mdContext;
     unsigned char data[1024];
@@ -28,13 +27,6 @@ int count_hash(char *filename, char hash_text[]){
 		sprintf(&hash_text[j*2], "%02x", (unsigned char) c[j]);
 	}
     hash_text[strlen(hash_text)] = '\0';
-
-	// int i;
-    // for(i = 0; i < MD5_DIGEST_LENGTH; i++){
-	// 	printf("%02x", c[i]);
-	// } 
-
-    // printf (" %s\n", filename);
     fclose (inFile);
     return 0;
 }

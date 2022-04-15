@@ -7,13 +7,18 @@
 #include "quarantine_cipher.h"
 
 
+struct Results
+{
+  int scan_count;
+  int virus_count;
+};
+
 void list_files(char* dirname){
   DIR* dir = opendir(dirname);
   if (dir == NULL){
     return;
   }
 
-  // && strcmp(entity->d_name, ".") != 0 && strcmp(entity->d_name, "..") != 0
 
   printf("Reading files in: %s\n", dirname);
 
@@ -30,9 +35,7 @@ void list_files(char* dirname){
         continue;
       if (strcmp(entity->d_name, "..") == 0)
         continue;
-      // snprintf(path, 4097, "%s/%s", dirname, entity->d_name);
 
-      // printf("%s\n", path);
       strcat(path, dirname);
       strcat(path, "/");
       strcat(path, entity->d_name);
@@ -44,7 +47,7 @@ void list_files(char* dirname){
 }
 
 
-void scan_files(char* dirname){
+int scan_files(char* dirname){
 
   char *baza[COLS];
   int baza_size;
@@ -52,12 +55,11 @@ void scan_files(char* dirname){
 
   DIR* dir = opendir(dirname);
   if (dir == NULL){
-    return;
+    return 0;
   }
 
-  // && strcmp(entity->d_name, ".") != 0 && strcmp(entity->d_name, "..") != 0
+  int counter = 0;
 
-  // printf("Reading files in: %s\n", dirname);
 
   struct dirent* entity;
   entity = readdir(dir);
@@ -70,33 +72,22 @@ void scan_files(char* dirname){
       strcat(path_to_scan, dirname);
       strcat(path_to_scan, "/");
       strcat(path_to_scan, entity->d_name);
-      printf("%s\n", path_to_scan);
 
       count_hash(path_to_scan, hash);
-      // printf("%s\n\n", hash);
 
       for(int i=0; i < baza_size; i++){
-        // printf("%s", baza[i]);
         if(!strncmp(hash, baza[i],32)){
-            printf("WIRUS!!!\n");
+            printf("\nWIRUS!!!\n");
+            printf("%s", path_to_scan);
             encrypt(path_to_scan);
         }
     }
-
-      // printf("%hhd %s/%s\n", entity->d_type, dirname, entity->d_name);
+    counter++;
     }
-        
 
     if(entity->d_type == DT_DIR && (strcmp(entity->d_name, "per_cpu") != 0 && strcmp(entity->d_name, ".") != 0 && (strcmp(entity->d_name, "..") != 0))){
       char path[4097] = {0};
 
-      // if (strcmp(entity->d_name, ".") == 0)
-      //   continue;
-      // if (strcmp(entity->d_name, "..") == 0)
-      //   continue;
-      // snprintf(path, 4097, "%s/%s", dirname, entity->d_name);
-
-      // printf("%s\n", path);
       strcat(path, dirname);
       strcat(path, "/");
       strcat(path, entity->d_name);
@@ -105,11 +96,7 @@ void scan_files(char* dirname){
     entity = readdir(dir);
   }
   closedir(dir);
+  return counter;
 }
 
-// int main(){
-//   char dirname[] = "/home/dan/Desktop";
-//   scan_files(dirname);
-//   return 0;
-// }
 

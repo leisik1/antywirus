@@ -18,12 +18,9 @@ int get_from_base(char *baza[], int* baza_size)
     
 
     if (fp == NULL){
-        printf("weeee");
         exit(EXIT_FAILURE);
-        printf("weeee");
     }
-
-    printf("weeee");        
+       
 
     int i = 0;
     while ((read = getline(&line, &len, fp)) != -1) {

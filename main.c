@@ -13,18 +13,16 @@
 
 int main()
 {
-    
+
     char *baza[COLS];
     int baza_size;
 	char hash[32];
     get_from_base(baza, &baza_size);
     
-    //char *filename="/home/dan/Desktop/antywirus/.git/hooks/pre-merge-commit.sample";
     char *filename="/home/dan/Desktop/virus.txt";
-    char *file_path[4096];
-
-  
-    // scan_files("/home/dan/Desktop");
+    char file_path[4096];
+    char dest_path[4096];
+    int stat;
 
     int out = 1;
     int operation;
@@ -47,8 +45,8 @@ int main()
             for(int i=0; i < baza_size; i++){
                 if(!strncmp(hash, baza[i],32)){
                     printf("%s\n",baza[i]);
-                    printf("WIRUS!!!\n");
-                    encrypt(&file_path);
+                    printf("\nWIRUS!!!\n");
+                    encrypt(file_path);
                 }
             }
             printf("Scann done.\n");
@@ -56,16 +54,24 @@ int main()
 
         case 2:
             scanf("%s", file_path);
-            scan_files(file_path);
-            printf("Scann done.\n");
+            stat = scan_files(file_path);
+            printf("Scann done. %d viruses found!\n", stat);
+            stat = 0;
             break;
 
         case 3:
-            scan_files("/");
+            printf("Scanning...");
+            stat = scan_files("/");
+            printf("Done. %d filviruses found!", stat);
             break;
 
         case 4:
-            /* code */
+            printf("Input a path to file from a quarantine DB");
+            scanf("%s", file_path);
+            printf("Input a path to destination from a quarantine DB");
+            scanf("%s", dest_path);
+            decrypt(file_path,dest_path);
+            printf("Done.");
             break;
         
         case 5:
@@ -73,6 +79,7 @@ int main()
             break;
         
         default:
+            printf("You propably made a mistake, please try again!");
             break;
         }
     }
