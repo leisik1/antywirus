@@ -22,28 +22,38 @@ void encrypt(char *file_to_encrypt) {
 
     char desired_name[4096] = {0};
 
+    // printf("%s", file_to_encrypt);
+
     strcat(desired_name, "/home/dan/Desktop/antywirus/quarantine/");
 
     // char * desired_name = "/home/dan/Desktop/antywirus/quarantine/";
     char * tld = strrchr(file_to_encrypt, '/');
+    // printf("%s", tld);
     char * file_name = tld + 1;
+    // printf("%s", file_name);
 
 	int n = get_random();
     char num_text[100] = {0};
+
+    // printf("xd!!!\n");
 
     sprintf(num_text,"%d",n);
 
     strcat(desired_name,num_text);
     strcat(desired_name,file_name);
-    printf("%s", desired_name);
+    // printf("xdd!!!\n");
+    // printf("%s", desired_name);
 
     time_t t = time(NULL);
     struct tm *tm = localtime(&t);
     char s[64];
     assert(strftime(s, sizeof(s), "%c", tm));
 
+
     FILE* database = fopen("/home/dan/Desktop/antywirus/quarantine_db.txt","a");
     fprintf(database, "File destination: %s, File name in quarantine: %s, Date: %s\n",file_to_encrypt,desired_name,s);
+
+    
 
     AES_set_encrypt_key(userkey, 128, &key);
     FILE *ifp, *ofp;

@@ -17,6 +17,7 @@ CMakeFiles/antywirus.dir/main.c.o: ../database_operator.h
 CMakeFiles/antywirus.dir/main.c.o: ../file_operator.h
 CMakeFiles/antywirus.dir/main.c.o: ../hasher.h
 CMakeFiles/antywirus.dir/main.c.o: ../main.c
+CMakeFiles/antywirus.dir/main.c.o: ../quarantine_cipher.h
 
 CMakeFiles/antywirus.dir/quarantine_cipher.c.o: ../quarantine_cipher.c
 

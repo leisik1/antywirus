@@ -18,5 +18,6 @@ CMakeFiles/antywirus.dir/main.c.o
  /home/dan/Desktop/antywirus/file_operator.h
  /home/dan/Desktop/antywirus/hasher.h
  /home/dan/Desktop/antywirus/main.c
+ /home/dan/Desktop/antywirus/quarantine_cipher.h
 CMakeFiles/antywirus.dir/quarantine_cipher.c.o
  /home/dan/Desktop/antywirus/quarantine_cipher.c
