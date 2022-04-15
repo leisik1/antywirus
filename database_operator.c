@@ -9,13 +9,21 @@
 
 int get_from_base(char *baza[], int* baza_size)
 {
-    FILE * fp = fopen("vulnerability_db.txt", "r");
+    
+    FILE * fp = fopen("/home/dan/Desktop/antywirus/vulnerability_db.txt", "r");
     char * line = NULL;
     size_t len = 0;
     ssize_t read;
 
-    if (fp == NULL)
+    
+
+    if (fp == NULL){
+        printf("weeee");
         exit(EXIT_FAILURE);
+        printf("weeee");
+    }
+
+    printf("weeee");        
 
     int i = 0;
     while ((read = getline(&line, &len, fp)) != -1) {
@@ -24,6 +32,8 @@ int get_from_base(char *baza[], int* baza_size)
         i++;
     }
     *baza_size = i;
+
+
     // printf("Hashes: %s %s %s %s", baza[0], baza[1], baza[2], baza[3]);
     // printf("%p", &baza);
 

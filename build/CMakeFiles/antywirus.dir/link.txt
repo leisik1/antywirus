@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/antywirus.dir/file_operator.c.o CMakeFiles/antywirus.dir/database_operator.c.o CMakeFiles/antywirus.dir/compare.c.o CMakeFiles/antywirus.dir/hasher.c.o CMakeFiles/antywirus.dir/quarantine_cipher.c.o CMakeFiles/antywirus.dir/main.c.o  -o antywirus  /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib/x86_64-linux-gnu/libcrypto.so 

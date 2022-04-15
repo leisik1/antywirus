@@ -107,8 +107,9 @@ void scan_files(char* dirname){
   closedir(dir);
 }
 
-int main(){
-  char dirname[] = "/home/dan/Desktop";
-  scan_files(dirname);
-  return 0;
-}
+// int main(){
+//   char dirname[] = "/home/dan/Desktop";
+//   scan_files(dirname);
+//   return 0;
+// }
+

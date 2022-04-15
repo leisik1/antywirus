@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dan/Desktop/antywirus/compare.h
+
+/home/dan/Desktop/antywirus/database_operator.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+compare.h
+/home/dan/Desktop/antywirus/compare.h
+
+/home/dan/Desktop/antywirus/quarantine_cipher.c
+stdio.h
+-
+stdlib.h
+-
+openssl/aes.h
+-
+string.h
+-
+time.h
+-
+assert.h
+-
+

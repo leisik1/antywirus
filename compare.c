@@ -18,18 +18,3 @@ int stringcompare(char *s1,char *s2)
     return 0; 
 }
 
-int main()
-{
-    char hash[] = "qwerty";
-    char mach[] = "qwerty";
-    int c;
-
-    c = stringcompare(hash, mach);
-
-    if(c) 
-        printf("They are equal");
-    else 
-        printf("They are NOT equal");
-    
-    return 0;
-}

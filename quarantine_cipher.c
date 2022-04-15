@@ -42,7 +42,7 @@ void encrypt(char *file_to_encrypt) {
     char s[64];
     assert(strftime(s, sizeof(s), "%c", tm));
 
-    FILE* database = fopen("quarantine_db.txt","a");
+    FILE* database = fopen("/home/dan/Desktop/antywirus/quarantine_db.txt","a");
     fprintf(database, "File destination: %s, File name in quarantine: %s, Date: %s\n",file_to_encrypt,desired_name,s);
 
     AES_set_encrypt_key(userkey, 128, &key);
